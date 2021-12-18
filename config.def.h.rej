@@ -1,0 +1,7 @@
+--- config.def.h
++++ config.def.h
+@@ -117,4 +122,3 @@ static Button buttons[] = {
+ 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+ 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+ };
+-
