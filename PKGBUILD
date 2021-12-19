@@ -1,6 +1,6 @@
 # Maintainer: Kishore Satheeskumar <k.sath214@gmail.com>
 pkgname=nintenno-dwm
-pkgver=6.2.r5.f8d0a55
+pkgver=6.2.r7.2e63d31
 pkgrel=1
 pkgdesc="My Personal dwm build at https://github.com/KSatheeskumar21/nintenno-dwm"
 arch=(x86_64)
@@ -37,10 +37,8 @@ package() {
 	cd nintenno-dwm
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
-	make PREFIX=/usr/local DESTIR="${pkgdir}" install
-	make install
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nintenno-dwm/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/nintenno-dwm/README"
-	install -Dm644 dwm "${pkgdir}/usr/local/bin/dwm"
-	install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "${pkgdir}/usr/share/xsessions/dwm.desktop"
+	install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
