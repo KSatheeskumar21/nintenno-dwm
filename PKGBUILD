@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <k.sath214@gmail.com>
 pkgname=nintenno-dwm
-pkgver=6.2.r93.78addef
+pkgver=6.2.r2.d7eff6d
 pkgrel=1
 pkgdesc="My Personal dwm build at https://github.com/KSatheeskumar21/nintenno-dwm"
 arch=(x86_64)
