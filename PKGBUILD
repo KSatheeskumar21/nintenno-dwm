@@ -37,9 +37,10 @@ package() {
 	cd nintenno-dwm
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
-	sudo make PREFIX=/usr/local DESTIR="${pkgdir}" install
-	# sudo make install
+	make PREFIX=/usr/local DESTIR="${pkgdir}" install
+	make install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nintenno-dwm/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/nintenno-dwm/README"
+	install -Dm644 dwm "${pkgdir}/usr/local/bin/dwm"
 	install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "${pkgdir}/usr/share/xsessions/dwm.desktop"
 }
