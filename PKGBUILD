@@ -1,19 +1,19 @@
 # Maintainer: Kishore Satheeskumar <k.sath214@gmail.com>
 pkgname=nintenno-dwm
-pkgver=6.2.r4.3ae6f60
+pkgver=6.2.r5.f8d0a55
 pkgrel=1
 pkgdesc="My Personal dwm build at https://github.com/KSatheeskumar21/nintenno-dwm"
 arch=(x86_64)
 url="https://github.com/KSatheeskumar21/nintenno-dwm"
 license=('MIT')
 groups=()
-depends=(libx11 libxinerama freetype2 nerd-fonts-source-code-pro ttf-jetbrains-mono ttf-joypixels picom nitrogen xfce4-clipman-plugin network-manager-applet dunst nintenno-dmenu nintenno-st alacritty)
+depends=(libx11 libxinerama freetype2 libxft-bgra-git nerd-fonts-source-code-pro ttf-jetbrains-mono ttf-joypixels picom nitrogen xfce4-clipman-plugin network-manager-applet dunst nintenno-dmenu nintenno-st alacritty)
 makedepends=(make)
 checkdepends=()
 optdepends=(nintenno-surf)
 provides=(dwm)
-conflicts=()
-replaces=(dwm)
+conflicts=(dwm)
+replaces=()
 backup=()
 options=()
 install=${pkgname}.install
@@ -23,8 +23,8 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-prepare() {
-	cd "$pkgname"
+pkgver() {
+	cd "${_pkgname}"
 	printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -35,11 +35,11 @@ build() {
 
 package() {
 	cd nintenno-dwm
-	mkdir -p $pkgdir/opt/$pkgname
-	cp -rf * $pkgdir/opt/$pkgname
-	sudo make PREFIX=/usr/local DESTIR="$pkgdir" install
+	mkdir -p ${pkgdir}/opt/${pkgname}
+	cp -rf * ${pkgdir}/opt/${pkgname}
+	sudo make PREFIX=/usr/local DESTIR="${pkgdir}" install
 	# sudo make install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nintenno-dwm/LICENSE"
-	install -Dm644 README "$pkgdir/usr/share/doc/nintenno-dwm/README"
-	install -Dm644 "$srcdir/nintenno-dwm/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nintenno-dwm/LICENSE"
+	install -Dm644 README "${pkgdir}/usr/share/doc/nintenno-dwm/README"
+	install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "${pkgdir}/usr/share/xsessions/dwm.desktop"
 }
