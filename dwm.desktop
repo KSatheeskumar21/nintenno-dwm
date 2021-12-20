@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Dwm
+Icon=dwm
 Comment=Dwm
-Type=Application
+Type=XSession
 Exec=dwm
 TryExec=dwm
-Keywords=tiling;window;manager;wm;

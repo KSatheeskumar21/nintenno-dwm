@@ -1,6 +1,6 @@
 # Maintainer: Kishore Satheeskumar <k.sath214@gmail.com>
 pkgname=nintenno-dwm
-pkgver=6.2.r7.2e63d31
+pkgver=6.2.r8.d58a8ff
 pkgrel=1
 pkgdesc="My Personal dwm build at https://github.com/KSatheeskumar21/nintenno-dwm"
 arch=(x86_64)
@@ -17,28 +17,43 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-changelog=
 source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
-	printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  echo "####################"
+  echo "Pkg dir: ${pkgdir}"
+  echo "####################"
+  printf "\n"
+  echo "####################"
+  echo "src dir: ${srcdir}"
+  echo "####################"
 }
 
 build() {
-	cd nintenno-dwm
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETPYEINC=/usr/include/freetype2
+  cd nintenno-dwm
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-	cd nintenno-dwm
-	mkdir -p ${pkgdir}/opt/${pkgname}
-	cp -rf * ${pkgdir}/opt/${pkgname}
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nintenno-dwm/LICENSE"
-	install -Dm644 README "${pkgdir}/usr/share/doc/nintenno-dwm/README"
-	install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+  # cd "$srcdir/$pkgname"
+  cd nintenno-dwm
+  echo "Making directories and copying files"
+  mkdir -p "${pkgdir}"/opt/${pkgname}
+  cp -rf * "${pkgdir}"/opt/${pkgname}
+  echo -e "Installing"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  echo -e "Copying LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  echo -e "Copying README"
+  install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
+  echo -e "Copying desktop files"
+  install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "$pkgdir/usr/share/xsession/dwm.desktop"
 }
