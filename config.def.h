@@ -34,6 +34,7 @@ static const char *const autostart[] = {
 	"nitrogen", "--restore", NULL,
 	"/usr/bin/emacs", "--daemon", NULL,
 	"dwmblocks", NULL, 
+	"lxsession", NULL,
 	/* "slstatus", NULL, */
 	"xfce4-clipman", NULL,
 	"nm-applet", NULL,
