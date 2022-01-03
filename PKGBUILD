@@ -1,6 +1,6 @@
 # Maintainer: Kishore Satheeskumar <k.sath214@gmail.com>
 pkgname=nintenno-dwm
-pkgver=6.2.r11.4145497
+pkgver=6.2.r13.0bc07cf
 pkgrel=1
 pkgdesc="My Personal dwm build at https://github.com/KSatheeskumar21/nintenno-dwm"
 arch=(x86_64)
@@ -55,5 +55,6 @@ package() {
   echo -e "Copying README"
   install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
   echo -e "Copying desktop files"
-  install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "$pkgdir/usr/share/xsession/dwm.desktop"
+  mkdir -p "${pkgdir}/usr/share/xsessions/"
+  install -Dm644 "${srcdir}/nintenno-dwm/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
