@@ -22,7 +22,7 @@ static const char dmenufont[]       = "JetBrains Mono:size=10";
  * doom-one.h
  */
 
-#include "themes/doom-one.h"
+#include "themes/tokyo-night.h"
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
