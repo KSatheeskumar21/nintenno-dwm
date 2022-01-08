@@ -1,6 +1,6 @@
 # Maintainer: Kishore Satheeskumar <k.sath214@gmail.com>
 pkgname=nintenno-dwm
-pkgver=6.3.r20.053b689
+pkgver=6.3.r22.0d77699
 pkgrel=1
 pkgdesc="My Personal dwm build at https://github.com/KSatheeskumar21/nintenno-dwm"
 arch=(x86_64)
